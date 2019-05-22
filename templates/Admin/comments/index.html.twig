@@ -1,0 +1,65 @@
+{% extends 'Admin/base.html.twig' %}
+
+{% block title %} Albums {% endblock %}
+{% block body %}
+<section class="container" id="section-home">
+    <div class="col-md-9 card" style="min-height:25em; color: white; padding: 2em;">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Firstname</th>
+                    <th>Album</th>
+                    <th>Content</th>
+                    <th>Date</th>
+                    <th>Show</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comments in data %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ comments.user.name }}</td>
+                    <td>{{ comments.user.firstname }}</td>
+                    <td>{{ comments.album.name }}</td>
+                    <td>{{ comments.content|slice(0, 10) }} ...</td>
+                    <td>{{ comments.date|date('Y-m-d H:i:s') }}</td>
+                    <td><a href="{{ path('show-comment', {id : comments.id} ) }}"><img src="{{ asset('Admin/img/update.png') }}"/></td>
+                    <td><img src="{{ asset('Admin/img/delete.png') }}" data-toggle="modal" data-target="#delete-modal-{{ comments.id }}"/></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>  
+    </div>
+</section>
+
+{% for comments in data %}
+<div class="modal" id="delete-modal-{{ comments.id }}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete comment</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                You are on the point to delete this comment, would you want to confirm ?
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">no</button>
+                <a href="{{ path('ad_comment_delete', {id : comments.id}) }}" role="button" class="btn btn-danger" style="color:white">yes</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

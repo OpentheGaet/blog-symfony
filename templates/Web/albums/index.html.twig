@@ -1,0 +1,19 @@
+{% extends 'Web/base.html.twig' %}
+
+{% block title %} Albums {% endblock %}
+
+
+{% block body %}
+
+<div id="title">
+    <h1>Our Albums</h1>
+</div>
+<div class="container">
+    {% for albums in data %}
+    <div class="col-md-4">
+        <a href="{{ path('album', {id : albums.id}) }}"><img src="./Web/img/albums/{{ albums.imageName }}"  alt="name of the album: {{ albums.name }}" class="albs-images"></a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

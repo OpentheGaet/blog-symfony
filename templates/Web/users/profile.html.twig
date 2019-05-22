@@ -1,0 +1,24 @@
+{% extends 'Web/base.html.twig' %}
+
+{% block title %} Register {% endblock %}
+
+{% block body %}
+
+<div class="container" id="register">
+    <div class="col-md-12">
+        <h3>Register your account</h3>
+        {{ form_start(form) }}
+            {{ form_row(form.firstName) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.address) }}
+            {{ form_row(form.number) }}
+            {{ form_row(form.postalCode) }}
+            {{ form_row(form.city) }}
+            {{ form_row(form.email) }}
+            <button type="submit" id="send-reg-pass">Register</button>
+            <a href="{{ path('profile-pass') }}" id="send-reg-pass">Change password</a>
+        {{ form_end(form) }} 
+    </div>
+</div>
+
+{% endblock %}

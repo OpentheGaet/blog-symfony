@@ -1,0 +1,28 @@
+{% extends 'Web/base.html.twig' %}
+
+{% block title %} Connecter {% endblock %}
+
+{% block body %}
+
+{% if (state) %}
+<p>Il y eu une erreur !</p>
+{{ dump(state) }}
+{{ username }}
+{% endif %}
+
+<div class="container" id="register">
+    <form class="col-md-12" method="post" action="{{ path('ad_connecter') }}">
+        <div class="form-group">
+            <label for="_username">Votre login</label>
+            <input type="text" name="_username" class="form-control" id="login" value="{{ username }}">
+        </div>
+        <div class="form-group">
+            <label for="_password">Mot de passe</label>
+            <input type="password" name="_password" class="form-control" id="pass-1">
+        </div>
+        <input type="hidden" name="roles" value="ROLE_ADMIN">
+        <button type="submit" id="send-reg-pass">Connect</button>
+    </form>
+</div>
+
+{% endblock %}

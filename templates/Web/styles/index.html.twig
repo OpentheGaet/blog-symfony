@@ -1,0 +1,18 @@
+{% extends 'Web/base.html.twig' %}
+
+{% block title %} Styles {% endblock %}
+
+{% block body %}
+
+<div id="title">
+    <h1>Our Styles</h1>
+</div>
+<div class="container">
+    {% for types in data %}
+    <div class="col-md-3 intro artists">
+        <p class="text-primary"><b>{{ types.name }}</b></p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

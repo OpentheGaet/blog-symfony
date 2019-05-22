@@ -1,0 +1,19 @@
+{% extends 'Web/base.html.twig' %}
+
+{% block title %} Artists {% endblock %}
+
+
+{% block body %}
+
+<div id="title">
+    <h1>Our Artists</h1>
+</div>
+<div class="container">
+    {% for artists in data %}
+    <div class="col-md-3 intro artists">
+        <p class="text-primary"><b>{{ artists.name }}</b></p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'Web/base.html.twig' %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+<div id="component-slider">
+    {% if app.user %}
+    <div id="welcome-wrapper">
+        <a href="{{ path('profile') }}" id="welcome-link" title="click here for accessing to your profile">Welcome {{ app.user.firstname }} {{ app.user.name }}</a>
+    </div>
+    {% else %}
+    <button id="press-connect">connect</button>
+    <button id="canceld-connect">canceld</button>
+    <div id="component-connector" class="container">
+        <form class="col-md-4" method="post" action="{{ path('connecter') }}" id="form-connect">
+            <div class="form-group">
+                <label for="login">Votre login</label>
+                <input type="text" class="form-control" name="_username" id="login" />
+            </div>
+            <div class="form-group">
+                <label for="password">Votre mot de passe</label>
+                <input type="password" class="form-control" name="_password" id="password">
+            </div>
+            <input type="button" id="send-log-pass" class="log-pass" value="Send">
+            <button type="submit" id="send-data" hidden></button>
+            <a href="{{ path('register') }}" class="log-pass">Register</a>
+        </form>  
+    </div>
+    {% endif %}
+    <div id="slider-accessories">
+        <button id="before"><img src="{{ asset('Web/img/slider/accessories/arrowheads-pointing-to-the-left.png') }}" alt=""></button>
+        <button id="pause"><img src="{{ asset('Web/img/slider/accessories/pause.png') }}" alt=""></button>
+        <button id="play" style="display:none"><img src="{{ asset('Web/img/slider/accessories/play-button-sing.png') }}" alt=""></button>
+        <button id="next"><img src="{{ asset('Web/img/slider/accessories/forward-button.png') }}" alt=""></button>
+    </div>
+    <script src="views/user/components-home/js/component-slider.js"></script>
+</div>
+
+<div id="title">
+    <h1>Welcome to Music Store</h1>
+</div>
+<div id="components-musicians" class="container">
+    <div id="component-albums" class="col-md-3 intro">
+        <h3>Album</h3>
+        <img src="{{ asset('Web/img/home/music-album.png') }}" id="ajax-album-show" alt="">
+        <img src="{{ asset('Web/img/home/music-album.png') }}" id="ajax-album-hide" alt="" style="display:none">
+    </div>
+    <div id="component-styles" class="col-md-3 intro">
+        <h3>Style</h3>
+        <img src="{{ asset('Web/img/home/style.png') }}" id="ajax-style-show" alt="">
+        <img src="{{ asset('Web/img/home/style.png') }}" id="ajax-style-hide" alt="" style="display:none">
+    </div>
+    <div id="component-artists" class="col-md-3 intro">
+        <h3>Artist</h3>
+        <img src="{{ asset('Web/img/home/artist.png') }}" id="ajax-artist-show" alt="">
+        <img src="{{ asset('Web/img/home/artist.png') }}" id="ajax-artist-hide" alt="" style="display:none">
+    </div>
+</div>
+<div class="container" id="show-info" style="display:none">
+</div>
+{% endblock %}
